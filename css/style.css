@@ -6,8 +6,8 @@ body, html {
 }
 
 body {
-	font-family: sans-serif;
-	background: #eee;
+	font-family: "Noto Sans", sans-serif;
+	background: #333;
 }
 
 
@@ -52,8 +52,8 @@ body {
 
 	background: #fff;
 	width: 40%;
-	height: 70%;
-	box-shadow: rgba(0,0,0,.7) 0px 3px 5px;
+	height: 80%;
+	box-shadow: rgba(0,0,0,.3) 0px 3px 5px;
 
 
 	z-index: 300000;
@@ -68,7 +68,7 @@ body {
 	height: 30px;
 	text-align: right;
 
-	font-size:25px;
+	font-size:20px;
 	text-align: center;
 }
 

@@ -10,6 +10,10 @@
 		editor = document.getElementById('modal-editor');
 		demo_code = document.getElementById('demo_code');
 
+
+		venster.contentDocument.documentElement.style.background = '#fff';
+
+
 		var the_code = function() { return codebox.value; };
 		var set_frame = function(str) {
 			venster.contentDocument.documentElement.getElementsByTagName('body')[0].innerHTML = str;
