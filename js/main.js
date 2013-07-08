@@ -1,5 +1,3 @@
-var z;
-
 (function () {
 
 	window.onload = function () {
@@ -9,7 +7,6 @@ var z;
 		venster = document.getElementById('venster');
 		codebox = document.getElementById('codebox');
 		closebox = document.getElementById('close');
-		openbox = document.getElementById('open');
 		editor = document.getElementById('modal-editor');
 		demo_code = document.getElementById('demo_code');
 
@@ -26,16 +23,6 @@ var z;
 		}
 
 		codebox.onpropertychange = codebox.oninput;
-
-		closebox.onclick = function() {
-			editor.style.display = 'none';
-			openbox.style.display = 'block';
-		};
-
-		openbox.onclick = function() {
-			editor.style.display = 'block';
-			openbox.style.display = 'none';
-		}
 		
 
 		codebox.value = demo_code.innerHTML;
