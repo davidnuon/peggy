@@ -1,0 +1,80 @@
+body {
+	font-family: sans-serif;
+}
+	
+
+#venster {
+	width: 90%;
+	height: 90%;
+	z-index: -33333;
+
+	position: absolute;
+
+	margin: 0 auto;
+	box-shadow: rgba(0,0,0,.3) 0px 5px 3px;
+}
+
+.open, .close {
+	background: #666;
+	color: #fff;
+	padding: 7px;
+
+	text-align: center;
+
+	border-radius: 3px;
+	position: absolute;
+	right: 4px;
+	top: 4px;
+
+	width: 90px;
+
+	z-index: 3333333;
+
+	cursor: pointer;
+}
+
+.open:hover {
+	background: #ddd;
+	color: #333;
+}
+
+.modal-editor {
+	position: absolute;
+
+	background: #fff;
+	width: 700px;
+	height: 430px;
+	box-shadow: rgba(0,0,0,.7) 0px 5px 10px;
+
+	top: 0;
+	right: 4px;
+}
+
+.modal-editor .ui-bar {
+	background: #666;
+	color: #fff;
+	padding:6px;
+	height: 30px;
+	text-align: right;
+}
+
+
+.modal-editor .ui-bar .close:hover {
+	background: rgba(0,0,0,.3);
+	color: #fff;
+}
+
+.modal-editor textarea {
+	position: absolute;
+	top: 45px;
+	left: 3px;
+	right: 3px;
+	bottom: 3px;
+	height: 380px;
+
+
+	border: 1px solid #ddd;
+
+	padding: 0;
+	margin: 0;
+}
