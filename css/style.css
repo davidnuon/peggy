@@ -7,12 +7,12 @@ body, html {
 
 body {
 	font-family: "Noto Sans", sans-serif;
-	background: #333;
+	background: #dedede;
 }
 
 
 #venster {	
-	width: 55%;
+	width: 60%;
 	margin: 0;
 	height: 100%;
 	padding: 0;
@@ -50,19 +50,19 @@ body {
 .modal-editor {
 	position: absolute;
 
-	background: #fff;
-	width: 40%;
-	height: 80%;
-	box-shadow: rgba(0,0,0,.3) 0px 3px 5px;
+	background: #aaa;
+	width: 38%;
+	height: 90%;
+	box-shadow: rgba(0,0,0,.3) 0px 3px 1px;
 
 
 	z-index: 300000;
-	top: 10%;
-	left: 3%;
+	bottom: 0%;
+	left: 1%;
 }
 
 .modal-editor .ui-bar {
-	background: #666;
+	background: #333;
 	color: #fff;
 	padding:6px;
 	height: 30px;
