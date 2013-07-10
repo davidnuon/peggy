@@ -20,16 +20,19 @@
 		}
 
 
+		var options = CodeMirror.defaults;
+		options.lineNumbers = true;
+		options.value = demo_code.innerHTML;
 
-		codebox.oninput = function(e) {
-			console.log(the_code());
-			set_frame(the_code());
-		}
 
-		codebox.onpropertychange = codebox.oninput;
-		
 
-		codebox.value = demo_code.innerHTML;
-		set_frame(the_code());
+		var editor = CodeMirror(codebox, options);
+		editor.on("change", function () {
+			set_frame(editor.getValue());
+		});
+
+
+		set_frame(editor.getValue())
+
 	};
 })();
