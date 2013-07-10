@@ -51,25 +51,22 @@ body {
 	position: absolute;
 
 	background: #aaa;
-	width: 38%;
-	height: 90%;
+	width: 40%;
+	height: 100%;
 	box-shadow: rgba(0,0,0,.3) 0px 3px 1px;
 
-
 	z-index: 300000;
-	bottom: 0%;
-	left: 1%;
+	top: 0;
 }
 
 .modal-editor .ui-bar {
 	background: #333;
 	color: #fff;
-	padding:6px;
-	height: 30px;
-	text-align: right;
+	padding:10px 15px;
+	height: 22px;
+	text-align: left;
 
-	font-size:20px;
-	text-align: center;
+	font-size::17px;
 }
 
 
