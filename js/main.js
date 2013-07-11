@@ -26,6 +26,7 @@
 	var options = CodeMirror.defaults;
 	options.lineNumbers = true;
 	options.value = demo_code.innerHTML;
+	options.lineWrapping = true;
 
 	window.onload = function () {
 
