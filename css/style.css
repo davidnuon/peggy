@@ -62,13 +62,9 @@ body {
 .modal-editor .ui-bar {
 	background: #333;
 	color: #fff;
-	padding:10px 15px;
-	height: 22px;
+	height: 40px;
 	text-align: left;
-
-	font-size::17px;
 }
-
 
 .modal-editor .ui-bar .close:hover {
 	background: rgba(0,0,0,.3);
@@ -88,4 +84,33 @@ body {
 
 	padding: 0;
 	margin: 0;
+}
+
+.tabs {
+	padding: 0;
+	margin: 0;
+}
+
+.tabs li {
+	display: block; 
+	float: left;
+	height: 20px;
+	padding: 10px 15px;
+
+	border-right:rgba(0,0,0,.5) solid 1px;
+	cursor: pointer;
+
+  -webkit-transition: background 0.2s linear;
+  -moz-transition: background 0.2s linear;
+  -o-transition: background 0.2s linear;
+  transition: background 0.2s linear;
+}
+
+.tabs li.selected {
+	background: rgba(110,110,110,.5);
+	color: #fff;
+}
+
+.tabs li:hover {
+	background: rgba(0,0,0,.5);
 }

@@ -1,4 +1,4 @@
-<!doctype html>
+	<!doctype html>
 <html>
 	<head>
 		<title>Web Editor Test</title>
@@ -8,16 +8,18 @@
 		<script src="./codemirror/lib/codemirror.js"></script>
 
 		<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-		
-		<style>
-		</style>
+
 	</head>
 
 	<body>
 
 		<div id="modal-editor" class="modal-editor">
 			<div class="ui-bar">
-				Markup
+				<ol class="tabs" id="tabs">
+					<li id="html">HTML</li>
+					<li id="css">CSS</li>
+					<li id="js">JS</li>
+				</ol>
 			</div>
 			<div id="codebox"></div>
 		</div>
@@ -56,6 +58,7 @@
 
 		</template>
 		
+		<script src="./js/doc_store.js"></script>
 		<script src="./js/main.js"></script>
 	</body>
 </html>
