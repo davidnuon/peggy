@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 <!doctype html>
 <html>
 	<head>
@@ -11,8 +12,8 @@
 
 	</head>
 
-	<body>
 
+{% block body %}		
 		<div id="modal-editor" class="modal-editor">
 			<div class="ui-bar">
 				<ol class="tabs" id="tabs">
@@ -56,9 +57,4 @@
 </code></pre>
 
 		</template>
-		
-		<script src="./js/jquery.js"></script>
-		<script src="./js/doc_store.js"></script>
-		<script src="./js/main.js"></script>
-	</body>
-</html>
+{% endblock %}
