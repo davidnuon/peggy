@@ -11,7 +11,7 @@ app = web.application(urls, globals())
 
 class Index:        
     def GET(self, name):
-    	template = env.get_template('base.html')
+    	template = env.get_template('index.html')
 
     	return template.render() 
 
