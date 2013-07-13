@@ -110,7 +110,7 @@ var refresh;
 	});
 
 	window.onresize = function () {
-		editor.setSize("100%", $pane.height() - 40);
+		editor.setSize("100%", $pane.height() - $("#tabs").height());
 	}
 
 })();
