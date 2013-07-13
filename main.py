@@ -13,7 +13,7 @@ class Index:
     def GET(self, name):
     	template = env.get_template('index.html')
 
-    	return template.render() 
+    	return template.render(css=[{"url":"/static/css/landing.css"}]) 
 
 if __name__ == "__main__":
     app.run()
