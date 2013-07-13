@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+		<title>{{ title }}</title>
+		{% for item in css %}
+			<link rel="stylesheet" href="{{ item.url }}">
+		{% endfor %}
+	</head>
+	<body>
+		{% block body %}
+			There's nothing to see here.
+        {% endblock %}
+
+		{% for item in js %}
+			<script type="text/javascript">src="{{ item.url }}"></script>
+		{% endfor %}
+	</body>
+</html>
