@@ -1,15 +1,38 @@
+var refresh;
+
 (function () {
 	// Helper to set the content of the document of the iframe
 	var set_frame = function(str) {
-		venster.contentDocument.documentElement.getElementsByTagName('body')[0].innerHTML = str;
+		venster
+			.contentDocument
+			.documentElement
+			.getElementsByTagName('body')[0]
+			.innerHTML = str;
 	}
 
-	// Helper to set the content of the document of the iframe
+	// Helper to set the css content of the document of the iframe
 	var set_css = function(str) {
-		venster.contentDocument.documentElement.getElementsByTagName('style')[0].innerHTML = str;
+		venster
+			.contentDocument
+			.documentElement
+			.getElementsByTagName('style')[0]
+			.innerHTML = str;
 	}
 
-	var $codebox, venster, $pane, $editor, $demo_code;
+	// Helper to set the javascript content of the document of the iframe
+	var set_js = function(str) {
+		var change = "window.onload = function () { ";
+		change += str;
+		change += "}; ";
+
+		venster
+			.contentDocument
+			.documentElement
+			.getElementsByTagName('script')[0]
+			.innerHTML = change;
+	}
+
+	var $codebox, $pane, $editor, $demo_code;
 	var the_docs = document_store();
 
 	// This is the iframe where we will be updating content
@@ -28,21 +51,31 @@
 	// Set the iframe background color to white
 	//venster.contentDocument.documentElement.style.background = '#fff';
 	var head = venster.contentDocument.documentElement.getElementsByTagName('head')[0];
-	var style = venster.contentDocument.createElement('style');
-	head.insertBefore(style, head[head.length+1]);
+	var style_tag = venster.contentDocument.createElement('style');
+	var script_tag = venster.contentDocument.createElement('script');
+	
+	head.insertBefore(style_tag, head[head.length+1]);
+	head.insertBefore(script_tag, head[head.length+1]);
 
-
-	// Editor Controls
+	// Editor Documents
 	var $the_tabs = $('#tabs li');
-	$the_tabs.each(
-		function(n, e) {
-			var id = $(e).attr('id');
-			the_docs.add(id);
-		}
-	);
+	$the_tabs.each( function(n, e) {
+		// Make a new document for each tab 
+		var id = $(e).attr('id');
+		the_docs.add(id);
 
+		// Make all tabs clickable
+		$(e).click(function() {			
+			$("#tabs li").removeClass("selected");
+			$(this).addClass("selected");
+
+			the_docs.change(id);
+			editor.setValue(the_docs.get());
+		});
+	});
+
+	// Add data to the documents
 	the_docs.docs.css.set('body {\n\tbackground:#fff;\n}');
-
 	the_docs.change('html');
 	the_docs.set(demo_code.innerHTML);
 
@@ -52,17 +85,7 @@
 	options.value = the_docs.get();
 	options.lineWrapping = true;
 
-	// Make all tabs clickable
-	$the_tabs.each( function(n, e) {
-		e.onclick = function(event) {			
-			$("#tabs li").removeClass("selected");
-			$(this).addClass("selected");
-
-			the_docs.change($(this).attr('id'));
-			editor.setValue(the_docs.get());
-		};
-	});
-
+	// When everything loads...
 	$(function () {
 		$('#html').attr('class', 'selected');
 
