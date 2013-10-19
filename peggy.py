@@ -37,7 +37,6 @@ class MainPage(webapp2.RequestHandler):
 
 class New(webapp2.RequestHandler):		
 	def post(self):
-		self.response.write('<html><body>')
 		documentName = timestr()
 		htmlcontent = constants.HTML_DEFAULT
 
@@ -73,7 +72,6 @@ class View(webapp2.RequestHandler):
 								  
 class Edit(webapp2.RequestHandler):
 	def get(self):
-		self.response.write('<html><body>')
 		documentName = self.request.get('documentName')
 		documents_query = Documents.query(ancestor=document_key(documentName))
 		
