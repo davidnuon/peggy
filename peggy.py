@@ -4,6 +4,15 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 
 import webapp2
+import jinja2
+import os
+
+path = os.path.join(os.path.dirname(__file__), 'tmpl')
+
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(path),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True)
 
 MAIN_PAGE_FOOTER_TEMPLATE = """\
 	<form action="/new" method="post">
@@ -50,17 +59,10 @@ class Documents(ndb.Model):
 
 class MainPage(webapp2.RequestHandler):
 	def get(self):
-		self.response.write('<html><body>')
-		self.response.write(MAIN_PAGE_FOOTER_TEMPLATE)
+		template = JINJA_ENVIRONMENT.get_template('front.html')
+		self.response.write(template.render({}))
 		
-		if users.get_current_user():
-			url = users.create_logout_url(self.request.uri)
-			url_linktext = 'Logout'
-		else:
-			url = users.create_login_url(self.request.uri)
-			url_linktext = 'Login'
-		self.response.write(LOGIN_TEMPLATE % (url, url_linktext))
-		
+
 class New(webapp2.RequestHandler):		
 	def post(self):
 		self.response.write('<html><body>')
@@ -101,12 +103,7 @@ class View(webapp2.RequestHandler):
 		self.response.write('<input type="hidden" name="user_ID" value="' + user_ID +'">')
 		self.response.write('<input type="submit">')
 		self.response.write('</form>')
-		
-		
-
-
-
-		
+	
 		
 		#self.response.write('%s<br>' % (cgi.escape(str(documents))))		
 		
@@ -125,34 +122,13 @@ class Edit(webapp2.RequestHandler):
 				self.response.write("YES!")		
 				document2 = document
 				break
-		
-		self.response.write(str(document.documentName))		
-		
-		#docu = Documents()
-		#docu.htmlcontent = "dd"
-		#docu.documentName = "unSaved"		
-		#docu.key = ndb.Key('Documents', user_ID, 'Documents', documentName)		
-		#self.response.write("<br>"+ str(docu))		
-		#self.response.write(cgi.escape(str(documents)))		
-		#self.response.write(len(documents))
-		#dkey = ndb.key("Documents", "id")
-		#self.response.write(dkey)
-		#doc = dkey.get()
-		#self.response.write(doc.htmlcontent)
-		
-		if document2 != None:
-			#self.response.write(document2.htmlcontent)
-			self.response.write(EDIT_PAGE_TEMPLATE % (documentName, user_ID, document2.htmlcontent, document2.csscontent))
-		else:
-			self.response.write(EDIT_PAGE_TEMPLATE % ("","","", ""))
-		
-		#dkey = document_key(user_ID)
-		#doc = dkey.get()
-		#document.put()
-		
-		#self.response.write(dkey)		
-		
-		#self.response.write('%s<br>' % (cgi.escape(str(documents))))
+
+
+		template = JINJA_ENVIRONMENT.get_template('editor.html')
+		self.response.write(template.render({
+			'content' : 'this is a test'
+
+		}))
 
 class Save(webapp2.RequestHandler):
 	def post(self):
