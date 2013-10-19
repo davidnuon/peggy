@@ -22,7 +22,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 
 def document_key(id):
-	"""Constructs a Datastore key for a Guestbook entity with guestbook_name."""
 	return ndb.Key('Documents', id)
 
 class Documents(ndb.Model):
