@@ -28,4 +28,4 @@ HTML_DEFAULT = """<h1>HTML Ipsum Presents</h1>
 
 CSS_DEFAULT = """ body {
 	background:#fff;
-};"""
+}"""
