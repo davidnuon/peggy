@@ -106,6 +106,10 @@ body {
   transition: background 0.2s linear;
 }
 
+.tabs a {
+	color: #fff;
+	text-decoration: none;
+}
 .tabs li.selected {
 	background: rgba(110,110,110,.5);
 	color: #fff;

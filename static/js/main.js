@@ -1,6 +1,6 @@
 (function () {
 	// Helpers
-	function $(id) {
+	function getElem(id) {
 		return document.getElementById(id);
 	}
 
@@ -29,27 +29,28 @@
 	var the_docs = document_store();
 
 	// This is the iframe where we will be updating content
-	venster = $('venster');
+	venster = getElem('venster');
 
 	// Left-side pane where we have controls
-	pane = $('modal-editor');
+	pane = getElem('modal-editor');
 	
 	// <div> to hold the codemirror editor
-	codebox = $('codebox');
+	codebox = getElem('codebox');
 
 	// <template> that holds initial content for the editor
-	demo_code = $('demo_code');
+	demo_code = getElem('demo_code');
+	demo_css  = getElem('demo_css');
 
 	// Making the document
 	// Set the iframe background color to white
-	//venster.contentDocument.documentElement.style.background = '#fff';
+
 	var head = venster.contentDocument.documentElement.getElementsByTagName('head')[0];
 	var style = venster.contentDocument.createElement('style');
 	head.insertBefore(style, head[head.length+1]);
 
 
 	// Editor Controls
-	var the_tabs = getChildNodes($('tabs'));
+	var the_tabs = getChildNodes(getElem('tabs'));
 	for (var i = the_tabs.length - 1; i >= 0; i--) {
 		if(the_tabs[i].getAttribute) {
 			var id = the_tabs[i].getAttribute('id');
@@ -58,10 +59,10 @@
 	};
 
 
-	the_docs.docs.css.set('body {\n\tbackground:#fff;\n};');
 
 	the_docs.change('html');
 	the_docs.set(demo_code.innerHTML);
+	the_docs.docs.css.set(demo_css.innerHTML);
 
 	// Codemirror options
 	var options = CodeMirror.defaults;
@@ -94,7 +95,7 @@
 	});
 
 	window.onload = function () {
-		$('html').setAttribute('class', 'selected');
+		getElem('html').setAttribute('class', 'selected');
 
 		editor = CodeMirror(codebox, options);
 		editor.on("change", function () {
@@ -114,6 +115,22 @@
 
 		set_css(the_docs.docs.css.get());
 		set_frame(the_docs.docs.html.get());
+
+		$('#save').click( function() {
+			$.post( "/save", { 
+				htmlcontent: the_docs.docs.html.get(), 
+				csscontent: the_docs.docs.css.get(),
+				documentName: $('#modal-editor').data('docid') } )
+			.done(
+				function() {
+					alert("Saved!");
+				})
+			.fail(
+				function() {
+
+					alert("Error!");
+				})
+		});
 	};
 
 	window.onresize = function () {
