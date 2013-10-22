@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block headincludes %}
+
+	<style>{{ csscontent }}</style>
+
+
+{% endblock headincludes %}
+
+{% block bottomincludes %}{% endblock bottomincludes %}
+
+{% block content %}
+	<ul>
+		{% for doc in list -%}
+    		<li>
+    			<a href="{{ doc.url }}">{{ doc.humanname }}</a>
+    		</li>
+		{%- endfor %}
+	</ul>
+{% endblock content %}
