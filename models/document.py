@@ -3,6 +3,7 @@ from google.appengine.ext import ndb
 
 class Document(ndb.Model):
 	documentName = ndb.StringProperty()
+	name = ndb.StringProperty()
 	htmlcontent = ndb.StringProperty(indexed=False)
 	csscontent = ndb.StringProperty(indexed=False)
 	date = ndb.DateTimeProperty(auto_now_add=True)

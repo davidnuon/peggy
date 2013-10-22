@@ -26,6 +26,8 @@ HTML_DEFAULT = """<h1>HTML Ipsum Presents</h1>
 }
 </code></pre>"""
 
-CSS_DEFAULT = """ body {
+CSS_DEFAULT = """body {
 	background:#fff;
 }"""
+
+DEFAULT_NAME = "Untitled Document"

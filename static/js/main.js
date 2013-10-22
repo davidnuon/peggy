@@ -38,8 +38,9 @@
 	codebox = getElem('codebox');
 
 	// <template> that holds initial content for the editor
-	demo_code = getElem('demo_code');
-	demo_css  = getElem('demo_css');
+	demo_code  = getElem('demo_code');
+	demo_css   = getElem('demo_css');
+	human_name = getElem('humanname');
 
 	// Making the document
 	// Set the iframe background color to white
@@ -58,7 +59,9 @@
 		};
 	};
 
-
+	the_docs.add('humanname');
+	the_docs.change('humanname');
+	the_docs.set(human_name.innerHTML);
 
 	the_docs.change('html');
 	the_docs.set(demo_code.innerHTML);
@@ -116,10 +119,14 @@
 		set_css(the_docs.docs.css.get());
 		set_frame(the_docs.docs.html.get());
 
+		$('#rename').click( function() {
+			the_docs.docs.humanname.set(prompt('Enter new name here', the_docs.docs.humanname.get()));
+		});
 		$('#save').click( function() {
 			$.post( "/save", { 
 				htmlcontent: the_docs.docs.html.get(), 
 				csscontent: the_docs.docs.css.get(),
+				humanname: the_docs.docs.humanname.get(),
 				documentName: $('#modal-editor').data('docid') } )
 			.done(
 				function() {
