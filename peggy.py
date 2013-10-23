@@ -65,7 +65,7 @@ class View(webapp2.RequestHandler):
 			'htmlcontent' : document.htmlcontent,
 			'csscontent' : document.csscontent,
 			'editurl' : '/edit?' + urllib.urlencode({'documentName' : documentName}),
-			'title' : document.name
+			'title' : document.name,
 			'id' : documentName
 		}))
 
