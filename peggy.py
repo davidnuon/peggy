@@ -65,6 +65,7 @@ class View(webapp2.RequestHandler):
 			'htmlcontent' : document.htmlcontent,
 			'csscontent' : document.csscontent,
 			'editurl' : '/edit?' + urllib.urlencode({'documentName' : documentName}),
+			'title' : document.name
 			'id' : documentName
 		}))
 
@@ -100,7 +101,8 @@ class Edit(webapp2.RequestHandler):
 			'htmlcontent' : document.htmlcontent,
 			'csscontent' : document.csscontent,
 			'humanname' : document.name,
-			'id' : documentName
+			'id' : documentName,
+			'title' : 'Editing ' + document.name
 		}))
 
 class Save(webapp2.RequestHandler):
