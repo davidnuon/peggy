@@ -64,6 +64,7 @@ class View(webapp2.RequestHandler):
 		self.response.write(template.render({
 			'htmlcontent' : document.htmlcontent,
 			'csscontent' : document.csscontent,
+			'editurl' : '/edit?' + urllib.urlencode({'documentName' : documentName}),
 			'id' : documentName
 		}))
 
@@ -75,7 +76,9 @@ class ListDocuments(webapp2.RequestHandler):
 		documents = map(lambda x: { 
 			'name' : x.documentName, 
 			'url' : '/view?' + urllib.urlencode({'documentName' : x.documentName}),
-			'humanname' : x.name or '[No name]'
+			'editurl' : '/edit?' + urllib.urlencode({'documentName' : x.documentName}),
+			'humanname' : x.name or '[No name]',
+			'date' : x.date
 			}, documents)
 
 		template = JINJA_ENVIRONMENT.get_template('list.html')

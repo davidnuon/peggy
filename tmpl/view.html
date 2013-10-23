@@ -11,5 +11,8 @@
 {% block bottomincludes %}{% endblock bottomincludes %}
 
 {% block content %}
+	<span style="display:block; padding:10px; background:#fff; box-shadow:rgba(0,0,0,.4) 0px 0px 3px; position:absolute; top:10px; right:10px;">
+		<a style="background:#ffdc10; color:#333; display:block; padding:5px 10px;" href="{{ editurl }}">Edit in Peggy</a>
+	</span>
 	{{ htmlcontent }}
 {% endblock content %}

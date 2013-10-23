@@ -1,20 +1,30 @@
 {% extends "base.html" %}
 
-
 {% block headincludes %}
 
-	<style>{{ csscontent }}</style>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600' rel='stylesheet' type='text/css'>
 
 
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/static/css/list.css">
 {% endblock headincludes %}
 
 {% block bottomincludes %}{% endblock bottomincludes %}
 
 {% block content %}
+	<h1>List of Pages</h1>
 	<ul>
 		{% for doc in list -%}
     		<li>
-    			<a href="{{ doc.url }}">{{ doc.humanname }}</a>
+			<span class="page_name">
+			{{ doc.humanname }}
+			</span>
+
+			<span>{{ doc.date }} </span> 
+
+			<hr />
+		<a class="sm_button" href="{{ doc.url }}">View</a>
+		<a class="sm_button" href="{{ doc.editurl }}">Edit</a>
     		</li>
 		{%- endfor %}
 	</ul>
